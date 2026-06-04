@@ -10,14 +10,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Bricolage+Grotesque:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #1c1917;
-      --paper: #faf9f6;
-      --accent: #3b6b5e;
-      --accent-light: #e6f0ec;
-      --accent-warm: #9a7b4f;
-      --muted: #78716c;
-      --border: #d6d3d1;
-      --card-bg: #fffffe;
+      --ink: #24231f;
+      --paper: #fbfaf6;
+      --accent: #2f5f4f;
+      --accent-light: #e8f0eb;
+      --muted: #7d7970;
+      --border: #e4dfd3;
+      --card-bg: #ffffff;
+      --tag-bg: #f1f4ef;
+      --tag-text: #3f5f52;
       --serif: 'Cormorant Garamond', 'Noto Sans JP', serif;
       --sans: 'Bricolage Grotesque', 'Noto Sans JP', sans-serif;
       --mono: 'JetBrains Mono', monospace;
@@ -35,10 +36,34 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* ── LANG TOGGLE ── */
+    body[lang="ja"] .en { display: none; }
+    body[lang="en"] .ja { display: none; }
+
+    .lang-toggle {
+      display: flex; align-items: center; gap: 0;
+      font-family: var(--mono); font-size: 0.72rem;
+      border: 1px solid var(--border); border-radius: 4px;
+      overflow: hidden; margin-left: 1.2rem; flex-shrink: 0;
+    }
+    .lang-btn {
+      padding: 0.3rem 0.6rem; cursor: pointer;
+      background: transparent; border: none;
+      color: var(--muted); font-family: var(--mono);
+      font-size: 0.72rem; letter-spacing: 0.03em;
+      transition: all 0.2s;
+    }
+    .lang-btn.active {
+      background: var(--accent); color: #fff;
+    }
+    .lang-btn:not(.active):hover {
+      background: var(--accent-light); color: var(--accent);
+    }
+
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(250, 249, 246, 0.85);
+      background: rgba(251, 250, 246, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
@@ -53,6 +78,7 @@
       font-family: var(--serif); font-size: 1.2rem; font-weight: 700;
       color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
     }
+    .nav-right { display: flex; align-items: center; }
     .nav-links { display: flex; gap: 1.8rem; list-style: none; }
     .nav-links a {
       font-size: 0.82rem; font-weight: 500; color: var(--muted);
@@ -97,7 +123,7 @@
       opacity: 0; animation: fadeUp 0.6s 0.45s forwards;
     }
     .hero-desc {
-      font-size: 1rem; color: var(--muted); max-width: 540px; line-height: 1.9;
+      font-size: 1rem; color: #52504a; max-width: 540px; line-height: 1.9;
       opacity: 0; animation: fadeUp 0.6s 0.55s forwards;
     }
     .hero-keywords {
@@ -106,7 +132,7 @@
     }
     .keyword {
       font-family: var(--mono); font-size: 0.7rem; padding: 0.35rem 0.75rem;
-      background: var(--accent-light); color: var(--accent); border-radius: 3px;
+      background: var(--tag-bg); color: var(--tag-text); border-radius: 3px;
       letter-spacing: 0.02em;
     }
     .hero-photo {
@@ -115,7 +141,7 @@
     }
     .hero-photo .photo-placeholder {
       width: 100%; height: 100%;
-      background: linear-gradient(145deg, var(--accent-light) 0%, #ddd5c8 100%);
+      background: linear-gradient(145deg, var(--accent-light) 0%, var(--border) 100%);
       display: flex; align-items: center; justify-content: center;
       font-family: var(--mono); font-size: 0.72rem; color: var(--accent);
       text-align: center; padding: 1rem;
@@ -137,9 +163,9 @@
 
     /* ── PUBLICATIONS ── */
     .pub-group-title {
-      font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.1em;
-      text-transform: uppercase; color: var(--accent); margin: 2.5rem 0 1rem;
-      padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+      font-family: var(--sans); font-size: 1.05rem; font-weight: 600;
+      letter-spacing: 0.03em; color: var(--ink); margin: 2.5rem 0 1.2rem;
+      padding-bottom: 0.6rem; border-bottom: 2px solid var(--border);
     }
     .pub-group-title:first-of-type { margin-top: 0; }
     .pub-list { list-style: none; }
@@ -153,9 +179,9 @@
       font-family: var(--serif); font-size: 1.1rem; font-weight: 600;
       line-height: 1.5; margin-bottom: 0.25rem;
     }
-    .pub-authors { font-size: 0.86rem; color: var(--muted); margin-bottom: 0.2rem; }
+    .pub-authors { font-size: 0.86rem; color: #52504a; margin-bottom: 0.2rem; }
     .pub-authors strong { color: var(--ink); font-weight: 600; }
-    .pub-venue { font-size: 0.8rem; font-style: italic; color: var(--accent-warm); }
+    .pub-venue { font-size: 0.8rem; font-style: italic; color: var(--muted); }
     .pub-links { margin-top: 0.45rem; display: flex; gap: 0.6rem; flex-wrap: wrap; }
     .pub-link {
       font-family: var(--mono); font-size: 0.68rem; color: var(--accent);
@@ -193,7 +219,7 @@
     .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .project-tech span {
       font-family: var(--mono); font-size: 0.66rem; padding: 0.18rem 0.5rem;
-      background: var(--paper); border: 1px solid var(--border); border-radius: 3px; color: var(--muted);
+      background: var(--tag-bg); border: 1px solid var(--border); border-radius: 3px; color: var(--tag-text);
     }
     .project-links {
       display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 1rem;
@@ -210,9 +236,9 @@
     .cv-section { margin-bottom: 2.8rem; }
     .cv-section:last-child { margin-bottom: 0; }
     .cv-category {
-      font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: 1.2rem;
-      padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+      font-family: var(--sans); font-size: 1.05rem; font-weight: 600;
+      letter-spacing: 0.03em; color: var(--ink); margin-bottom: 1.2rem;
+      padding-bottom: 0.6rem; border-bottom: 2px solid var(--border);
     }
     .cv-item {
       display: grid; grid-template-columns: 170px 1fr;
@@ -260,7 +286,7 @@
       .nav-links.open {
         display: flex; flex-direction: column; position: absolute;
         top: 58px; left: 0; right: 0;
-        background: rgba(250, 249, 246, 0.97); backdrop-filter: blur(20px);
+        background: rgba(251, 250, 246, 0.97); backdrop-filter: blur(20px);
         padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--border);
       }
       .hamburger { display: flex; }
@@ -271,24 +297,31 @@
       .pub-item { grid-template-columns: 1fr; gap: 0.2rem; }
       .cv-item { grid-template-columns: 1fr; gap: 0.2rem; }
       .project-grid { grid-template-columns: 1fr; }
+      .lang-toggle { margin-left: 0.8rem; }
     }
   </style>
 </head>
-<body>
+<body lang="ja">
 
   <!-- ── NAV ── -->
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#" class="nav-logo">T. Otsuka</a>
-      <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="メニュー">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links">
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#cv">CV</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <div class="nav-right">
+        <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="メニュー">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#cv">CV</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="lang-toggle">
+          <button class="lang-btn active" data-lang="ja">JA</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -297,12 +330,17 @@
     <div class="hero-content">
       <div>
         <span class="hero-label">Doctoral Program Applicant — 2027</span>
-        <h1 class="hero-name">大塚 隼輝</h1>
-        <p class="hero-name-en">Toshiki Otsuka</p>
+        <h1 class="hero-name">
+          <span class="ja">大塚 隼輝</span>
+          <span class="en">Toshiki Otsuka</span>
+        </h1>
+        <p class="hero-name-en">
+          <span class="ja">Toshiki Otsuka</span>
+          <span class="en">大塚 隼輝</span>
+        </p>
         <p class="hero-desc">
-          九州大学文学部卒。有田まちづくり公社取締役として地域創生に10年従事しながら、
-          生成AIと質的統合法（KJ法）の融合による創造性支援を研究しています。
-          人文知とテクノロジーの交差点から、人間とAIの共創のあり方を探求しています。
+          <span class="ja">九州大学文学部卒。有田まちづくり公社取締役として地域創生に10年従事しながら、生成AIと質的統合法（KJ法）の融合による創造性支援を研究しています。人文知とテクノロジーの交差点から、人間とAIの共創のあり方を探求しています。</span>
+          <span class="en">After graduating from Kyushu University with a degree in Humanities, I have spent over 10 years in community development as a board director of Arita Machizukuri Corporation, while researching AI-augmented creativity through the integration of generative AI and the KJ Method. I explore human–AI co-creation at the intersection of humanistic knowledge and technology.</span>
         </p>
         <div class="hero-keywords">
           <span class="keyword">AI-Augmented Creativity</span>
@@ -313,7 +351,10 @@
       </div>
       <div class="hero-photo">
         <!-- ここに写真を設置: <img src="photo.jpg" alt="大塚隼輝"> -->
-        <div class="photo-placeholder">写真を配置<br><br>photo.jpg</div>
+        <div class="photo-placeholder">
+          <span class="ja">写真を配置<br><br>photo.jpg</span>
+          <span class="en">Place photo<br><br>photo.jpg</span>
+        </div>
       </div>
     </div>
   </header>
@@ -326,7 +367,10 @@
       <div class="section-rule"></div>
     </div>
 
-    <div class="pub-group-title">International Conference (Peer-Reviewed)</div>
+    <div class="pub-group-title">
+      <span class="ja">国際会議（査読あり）</span>
+      <span class="en">International Conference (Peer-Reviewed)</span>
+    </div>
     <ul class="pub-list">
       <li class="pub-item">
         <span class="pub-year">2025</span>
@@ -352,15 +396,30 @@
       </li>
     </ul>
 
-    <div class="pub-group-title">Domestic Conference</div>
+    <div class="pub-group-title">
+      <span class="ja">国内会議</span>
+      <span class="en">Domestic Conference</span>
+    </div>
     <ul class="pub-list">
       <li class="pub-item">
         <span class="pub-year">2025</span>
         <div>
-          <div class="pub-title">OpenAIの応用ソフトとしてのKJ-Ho自動生成システムKJ-GPTの試作</div>
-          <div class="pub-authors"><strong>大塚隼輝</strong>, 村井友貴, 國藤進</div>
-          <div class="pub-venue">第9回 電子情報通信学会「合意と共創」研究会</div>
-          <span class="pub-badge">★ 優秀賞</span>
+          <div class="pub-title">
+            <span class="ja">OpenAIの応用ソフトとしてのKJ-Ho自動生成システムKJ-GPTの試作</span>
+            <span class="en">Prototyping KJ-GPT: An Automatic KJ-Ho Generation System as an Applied Software of OpenAI</span>
+          </div>
+          <div class="pub-authors">
+            <span class="ja"><strong>大塚隼輝</strong>, 村井友貴, 國藤進</span>
+            <span class="en"><strong>T. Otsuka</strong>, Y. Murai, S. Kunifuji</span>
+          </div>
+          <div class="pub-venue">
+            <span class="ja">第9回 電子情報通信学会「合意と共創」研究会</span>
+            <span class="en">9th IEICE Technical Committee on Consensus and Co-creation</span>
+          </div>
+          <span class="pub-badge">
+            <span class="ja">★ 優秀賞</span>
+            <span class="en">★ Best Paper</span>
+          </span>
           <div class="pub-links">
             <a href="https://ken.ieice.org/ken/paper/20250615vc9y/" class="pub-link" target="_blank">Paper</a>
           </div>
@@ -369,29 +428,59 @@
       <li class="pub-item">
         <span class="pub-year">2024</span>
         <div>
-          <div class="pub-title">KJ法と生成AIの融合は創造性を加速させるか</div>
-          <div class="pub-authors"><strong>大塚隼輝</strong></div>
-          <div class="pub-venue">日本創造学会 第46回研究発表大会</div>
+          <div class="pub-title">
+            <span class="ja">KJ法と生成AIの融合は創造性を加速させるか</span>
+            <span class="en">Can the Integration of the KJ Method and Generative AI Accelerate Creativity?</span>
+          </div>
+          <div class="pub-authors">
+            <span class="ja"><strong>大塚隼輝</strong></span>
+            <span class="en"><strong>T. Otsuka</strong></span>
+          </div>
+          <div class="pub-venue">
+            <span class="ja">日本創造学会 第46回研究発表大会</span>
+            <span class="en">Japan Creativity Society, 46th Research Conference</span>
+          </div>
         </div>
       </li>
       <li class="pub-item">
         <span class="pub-year">2015</span>
         <div>
-          <div class="pub-title">仏教修行者の生活と身体 ― 佐賀県基山町の真言宗吉祥寺を事例として</div>
-          <div class="pub-authors"><strong>大塚隼輝</strong></div>
-          <div class="pub-venue">西日本宗教学会 第5回学術大会</div>
+          <div class="pub-title">
+            <span class="ja">仏教修行者の生活と身体 ― 佐賀県基山町の真言宗吉祥寺を事例として</span>
+            <span class="en">Life and Body of Buddhist Practitioners: A Case Study of Shingon Kichijō-ji Temple in Kiyama, Saga</span>
+          </div>
+          <div class="pub-authors">
+            <span class="ja"><strong>大塚隼輝</strong></span>
+            <span class="en"><strong>T. Otsuka</strong></span>
+          </div>
+          <div class="pub-venue">
+            <span class="ja">西日本宗教学会 第5回学術大会</span>
+            <span class="en">West Japan Society for the Study of Religion, 5th Conference</span>
+          </div>
         </div>
       </li>
     </ul>
 
-    <div class="pub-group-title">Invited Talks</div>
+    <div class="pub-group-title">
+      <span class="ja">招待講演</span>
+      <span class="en">Invited Talks</span>
+    </div>
     <ul class="pub-list">
       <li class="pub-item">
         <span class="pub-year">2026</span>
         <div>
-          <div class="pub-title">AIと質的統合法の共創 ― 人間による検証可能な「半自動化KJ法」の設計</div>
-          <div class="pub-authors"><strong>大塚隼輝</strong></div>
-          <div class="pub-venue">看護質的統合法(KJ法)研究会 第18回研究集会 パネルディスカッション</div>
+          <div class="pub-title">
+            <span class="ja">AIと質的統合法の共創 ― 人間による検証可能な「半自動化KJ法」の設計</span>
+            <span class="en">Co-creation of AI and Qualitative Synthesis: Designing a Human-Verifiable "Semi-Automated KJ Method"</span>
+          </div>
+          <div class="pub-authors">
+            <span class="ja"><strong>大塚隼輝</strong></span>
+            <span class="en"><strong>T. Otsuka</strong></span>
+          </div>
+          <div class="pub-venue">
+            <span class="ja">看護質的統合法(KJ法)研究会 第18回研究集会 パネルディスカッション</span>
+            <span class="en">Nursing Qualitative Synthesis (KJ Method) Research Group, 18th Meeting — Panel Discussion</span>
+          </div>
           <div class="pub-links">
             <a href="https://www.n-kj.jp/files/meeting/meeting_18.pdf" class="pub-link" target="_blank">Info</a>
           </div>
@@ -400,17 +489,32 @@
       <li class="pub-item">
         <span class="pub-year">2025</span>
         <div>
-          <div class="pub-title">声なき声を拾う試み ― ChatGPTで図解を100枚作って分かったこと</div>
+          <div class="pub-title">
+            <span class="ja">声なき声を拾う試み ― ChatGPTで図解を100枚作って分かったこと</span>
+            <span class="en">Picking Up Unheard Voices: What We Learned from Creating 100 Diagrams with ChatGPT</span>
+          </div>
           <div class="pub-authors">C. Y. Futtel, <strong>T. Otsuka</strong></div>
-          <div class="pub-venue">AI時代の教育学会 生涯知能専門研究グループ オンライン講演</div>
+          <div class="pub-venue">
+            <span class="ja">AI時代の教育学会 生涯知能専門研究グループ オンライン講演</span>
+            <span class="en">Society of Education in the Age of AI, Lifelong Intelligence Research Group — Online Lecture</span>
+          </div>
         </div>
       </li>
       <li class="pub-item">
         <span class="pub-year">2024</span>
         <div>
-          <div class="pub-title">AIと人が作る、新しい地平について語ろう</div>
-          <div class="pub-authors">石井力重, 安松健, C. Y. Futtel, <strong>T. Otsuka</strong></div>
-          <div class="pub-venue">日本創造学会 第83回クリエイティブサロン</div>
+          <div class="pub-title">
+            <span class="ja">AIと人が作る、新しい地平について語ろう</span>
+            <span class="en">Let's Talk About the New Horizons Created by AI and Humans</span>
+          </div>
+          <div class="pub-authors">
+            <span class="ja">石井力重, 安松健, C. Y. Futtel, <strong>大塚隼輝</strong></span>
+            <span class="en">R. Ishii, T. Yasumatsu, C. Y. Futtel, <strong>T. Otsuka</strong></span>
+          </div>
+          <div class="pub-venue">
+            <span class="ja">日本創造学会 第83回クリエイティブサロン</span>
+            <span class="en">Japan Creativity Society, 83rd Creative Salon</span>
+          </div>
         </div>
       </li>
     </ul>
@@ -423,15 +527,15 @@
       <h2 class="section-title">Projects</h2>
       <div class="section-rule"></div>
     </div>
+
     <div class="pub-group-title">Research</div>
     <div class="project-grid">
       <div class="project-card">
         <div class="project-tag">Research System</div>
         <h3 class="project-name">KJ-GPT</h3>
         <p class="project-desc">
-          KJ法の図解化プロセスをOpenAI APIで半自動化するシステム。
-          質的データの構造化とラベル生成を支援し、人間による検証可能性を保持した設計。
-          電子情報通信学会「合意と共創」研究会にて優秀賞を受賞。
+          <span class="ja">KJ法の図解化プロセスをOpenAI APIで半自動化するシステム。質的データの構造化とラベル生成を支援し、人間による検証可能性を保持した設計。電子情報通信学会「合意と共創」研究会にて優秀賞を受賞。</span>
+          <span class="en">A system that semi-automates the KJ Method diagramming process using the OpenAI API. It assists with structuring qualitative data and generating labels while preserving human verifiability. Awarded Best Paper at the IEICE Technical Committee on Consensus and Co-creation.</span>
         </p>
         <div class="project-tech">
           <span>OpenAI API</span>
@@ -450,10 +554,13 @@
     <div class="project-grid">
       <div class="project-card">
         <div class="project-tag">Film</div>
-        <h3 class="project-name">もどらないかげ</h3>
+        <h3 class="project-name">
+          <span class="ja">もどらないかげ</span>
+          <span class="en">Modoranai Kage</span>
+        </h3>
         <p class="project-desc">
-          自主制作映画（2024年）。監督：厨子翔平、出演：大塚隼輝ほか。
-          地域に根ざした物語を映像化するプロジェクト。
+          <span class="ja">自主制作映画（2024年）。監督：厨子翔平、出演：大塚隼輝ほか。地域に根ざした物語を映像化するプロジェクト。</span>
+          <span class="en">Independent film (2024). Directed by Shohei Zushi, starring Toshiki Otsuka and others. A project bringing locally rooted stories to the screen.</span>
         </p>
         <div class="project-tech">
           <span>Film</span>
@@ -468,8 +575,8 @@
         <div class="project-tag">Publication Design</div>
         <h3 class="project-name">Slowly but Surely</h3>
         <p class="project-desc">
-          詩とAIグラフィックスを融合した自主制作冊子（2022年）。
-          壱岐成太郎（写真）、橋本優（デザイン）との共同制作。
+          <span class="ja">詩とAIグラフィックスを融合した自主制作冊子（2022年）。壱岐成太郎（写真）、橋本優（デザイン）との共同制作。</span>
+          <span class="en">A self-published booklet (2022) fusing poetry and AI-generated graphics. Co-created with Seitaro Iki (photography) and Masaru Hashimoto (design).</span>
         </p>
         <div class="project-tech">
           <span>Poetry</span>
@@ -482,10 +589,13 @@
       </div>
       <div class="project-card">
         <div class="project-tag">Community Design</div>
-        <h3 class="project-name">有田まちなかフェスティバル</h3>
+        <h3 class="project-name">
+          <span class="ja">有田まちなかフェスティバル</span>
+          <span class="en">Arita Machinaka Festival</span>
+        </h3>
         <p class="project-desc">
-          有田町の地域活性化事業。広告「yosomonシリーズ」の企画・衣装作成・出演を担当（2018–2019年）。
-          まちづくり公社での10年の実務経験に基づくプロジェクト。
+          <span class="ja">有田町の地域活性化事業。広告「yosomonシリーズ」の企画・衣装作成・出演を担当（2018–2019年）。まちづくり公社での10年の実務経験に基づくプロジェクト。</span>
+          <span class="en">A community revitalization project in Arita Town. Planned, produced costumes for, and appeared in the "yosomon" advertising series (2018–2019). Based on 10 years of hands-on experience at the Machizukuri Corporation.</span>
         </p>
         <div class="project-tech">
           <span>Community</span>
@@ -512,16 +622,31 @@
       <div class="cv-item">
         <span class="cv-date">2010.4 – 2015.3</span>
         <div class="cv-detail">
-          <h4>九州大学 文学部 人文学科</h4>
-          <p>比較宗教学研究室 ・ 指導教員：關一敏先生、飯嶋秀治先生</p>
-          <p>卒業論文「仏教修行者の生活と身体 ― 佐賀県基山町の真言宗吉祥寺を事例として」</p>
+          <h4>
+            <span class="ja">九州大学 文学部 人文学科</span>
+            <span class="en">Kyushu University — Faculty of Letters, Dept. of Humanities</span>
+          </h4>
+          <p>
+            <span class="ja">比較宗教学研究室 ・ 指導教員：關一敏先生、飯嶋秀治先生</span>
+            <span class="en">Comparative Religion Lab ・ Advisors: Prof. K. Seki, Prof. S. Iijima</span>
+          </p>
+          <p>
+            <span class="ja">卒業論文「仏教修行者の生活と身体 ― 佐賀県基山町の真言宗吉祥寺を事例として」</span>
+            <span class="en">Thesis: "Life and Body of Buddhist Practitioners: A Case Study of Shingon Kichijō-ji Temple in Kiyama, Saga"</span>
+          </p>
         </div>
       </div>
       <div class="cv-item">
         <span class="cv-date">2012.9 – 2013.7</span>
         <div class="cv-detail">
-          <h4>ルーヴェン・カトリック大学（ベルギー）</h4>
-          <p>交換留学</p>
+          <h4>
+            <span class="ja">ルーヴェン・カトリック大学（ベルギー）</span>
+            <span class="en">KU Leuven (Belgium)</span>
+          </h4>
+          <p>
+            <span class="ja">交換留学</span>
+            <span class="en">Exchange Student</span>
+          </p>
         </div>
       </div>
     </div>
@@ -529,17 +654,32 @@
     <div class="cv-section">
       <div class="cv-category">Professional Experience</div>
       <div class="cv-item">
-        <span class="cv-date">2022.6 – 現在</span>
+        <span class="cv-date">
+          <span class="ja">2022.6 – 現在</span>
+          <span class="en">2022.6 – Present</span>
+        </span>
         <div class="cv-detail">
-          <h4>株式会社有田まちづくり公社 — 取締役</h4>
-          <p>有田町の地域創生・まちづくり事業の企画運営</p>
+          <h4>
+            <span class="ja">株式会社有田まちづくり公社 — 取締役</span>
+            <span class="en">Arita Machizukuri Corporation — Board Director</span>
+          </h4>
+          <p>
+            <span class="ja">有田町の地域創生・まちづくり事業の企画運営</span>
+            <span class="en">Planning and managing community development projects in Arita Town</span>
+          </p>
         </div>
       </div>
       <div class="cv-item">
         <span class="cv-date">2015.7 – 2022.5</span>
         <div class="cv-detail">
-          <h4>株式会社有田まちづくり公社</h4>
-          <p>地域活性化プロジェクトの企画・実行</p>
+          <h4>
+            <span class="ja">株式会社有田まちづくり公社</span>
+            <span class="en">Arita Machizukuri Corporation</span>
+          </h4>
+          <p>
+            <span class="ja">地域活性化プロジェクトの企画・実行</span>
+            <span class="en">Planning and executing community revitalization projects</span>
+          </p>
         </div>
       </div>
     </div>
@@ -549,13 +689,19 @@
       <div class="cv-item">
         <span class="cv-date">2025</span>
         <div class="cv-detail">
-          <h4>電子情報通信学会「合意と共創」研究会 優秀賞</h4>
+          <h4>
+            <span class="ja">電子情報通信学会「合意と共創」研究会 優秀賞</span>
+            <span class="en">Best Paper Award — IEICE Technical Committee on Consensus and Co-creation</span>
+          </h4>
         </div>
       </div>
       <div class="cv-item">
         <span class="cv-date">2012</span>
         <div class="cv-detail">
-          <h4>九州大学基金支援助成事業 海外留学渡航支援</h4>
+          <h4>
+            <span class="ja">九州大学基金支援助成事業 海外留学渡航支援</span>
+            <span class="en">Kyushu University Foundation — Study Abroad Travel Grant</span>
+          </h4>
         </div>
       </div>
     </div>
@@ -565,13 +711,16 @@
       <div class="cv-item">
         <span class="cv-date">2021</span>
         <div class="cv-detail">
-          <h4>行政書士試験 合格</h4>
+          <h4>
+            <span class="ja">行政書士試験 合格</span>
+            <span class="en">Certified Administrative Procedures Specialist (Gyōsei Shoshi)</span>
+          </h4>
         </div>
       </div>
       <div class="cv-item">
         <span class="cv-date">2013</span>
         <div class="cv-detail">
-          <h4>TOEIC Listening & Reading Test 920点</h4>
+          <h4>TOEIC Listening & Reading Test 920</h4>
         </div>
       </div>
       <div class="cv-item">
@@ -595,18 +744,18 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         o2ca.design@gmail.com
       </a>
-      <a href="https://github.com/" class="contact-link" target="_blank" rel="noopener">
+      <a href="https://github.com/tshkotsk" class="contact-link" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
       </a>
-      <a href="https://scholar.google.com/" class="contact-link" target="_blank" rel="noopener">
+      <a href="https://researchmap.jp/toshiki_otsuka" class="contact-link" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>
-        Google Scholar
+        Researchmap
       </a>
-      <a href="https://www.instagram.com/" class="contact-link" target="_blank" rel="noopener">
+      <!-- <a href="https://www.instagram.com/" class="contact-link" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         Instagram
-      </a>
+      </a> -->
     </div>
   </section>
 
@@ -615,16 +764,31 @@
   </footer>
 
   <script>
+    // Nav scroll shadow
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
     });
+
+    // Close mobile menu on link click
     document.querySelectorAll('.nav-links a').forEach(a => {
       a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
     });
+
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Language toggle
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.body.setAttribute('lang', lang);
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
