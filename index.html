@@ -90,8 +90,13 @@
       display: flex; justify-content: space-between; align-items: center; height: 58px;
     }
     .nav-logo {
+      display: inline-flex; align-items: center; gap: 0.55rem;
       font-family: var(--serif); font-size: 1.2rem; font-weight: 700;
-      color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
+      color: var(--ink); text-decoration: none; letter-spacing: -0.02em; line-height: 1;
+    }
+    .nav-logo-mark {
+      display: block; width: 28px; height: 28px; max-width: 28px; max-height: 28px;
+      object-fit: contain; flex: 0 0 28px;
     }
     .nav-right { display: flex; align-items: center; }
     .nav-links { display: flex; gap: 1.8rem; list-style: none; }
@@ -322,7 +327,7 @@
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <img src="favicon.png" alt="T.O.">
+        <img class="nav-logo-mark" src="favicon.png" alt="T.O." width="28" height="28">
         <span class="ja">大塚隼輝</span>
         <span class="en">T. Otsuka</span>
       </a>
