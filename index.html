@@ -19,9 +19,13 @@
       --card-bg: #ffffff;
       --tag-bg: #f1f4ef;
       --tag-text: #3f5f52;
-      --serif: 'Cormorant Garamond', 'Noto Sans JP', serif;
-      --sans: 'Bricolage Grotesque', 'Noto Sans JP', sans-serif;
-      --mono: 'JetBrains Mono', monospace;
+      --font-ja: 'Noto Sans JP', sans-serif;
+      --font-en-serif: 'Cormorant Garamond', serif;
+      --font-en-sans: 'Bricolage Grotesque', sans-serif;
+      --font-en-mono: 'JetBrains Mono', monospace;
+      --serif: var(--font-ja);
+      --sans: var(--font-ja);
+      --mono: var(--font-ja);
     }
 
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -37,6 +41,16 @@
     }
 
     /* ── LANG TOGGLE ── */
+    body[lang="ja"] {
+      --serif: var(--font-ja);
+      --sans: var(--font-ja);
+      --mono: var(--font-ja);
+    }
+    body[lang="en"] {
+      --serif: var(--font-en-serif);
+      --sans: var(--font-en-sans);
+      --mono: var(--font-en-mono);
+    }
     body[lang="ja"] .en { display: none; }
     body[lang="en"] .ja { display: none; }
 
@@ -312,10 +326,22 @@
           <span></span><span></span><span></span>
         </button>
         <ul class="nav-links">
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#cv">CV</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#publications">
+            <span class="ja">業績</span>
+            <span class="en">Publications</span>
+          </a></li>
+          <li><a href="#projects">
+            <span class="ja">プロジェクト</span>
+            <span class="en">Projects</span>
+          </a></li>
+          <li><a href="#cv">
+            <span class="ja">履歴</span>
+            <span class="en">CV</span>
+          </a></li>
+          <li><a href="#contact">
+            <span class="ja">連絡先</span>
+            <span class="en">Contact</span>
+          </a></li>
         </ul>
         <div class="lang-toggle">
           <button class="lang-btn active" data-lang="ja">JA</button>
@@ -350,11 +376,7 @@
         </div>
       </div>
       <div class="hero-photo">
-        <!-- ここに写真を設置: <img src="photo.jpg" alt="大塚隼輝"> -->
-        <div class="photo-placeholder">
-          <span class="ja">写真を配置<br><br>photo.jpg</span>
-          <span class="en">Place photo<br><br>photo.jpg</span>
-        </div>
+        <img src="toshikiotsuka.jpg" alt="大塚隼輝">
       </div>
     </div>
   </header>
@@ -363,7 +385,10 @@
   <section id="publications" class="reveal">
     <div class="section-header">
       <span class="section-num">01</span>
-      <h2 class="section-title">Publications</h2>
+      <h2 class="section-title">
+        <span class="ja">業績</span>
+        <span class="en">Publications</span>
+      </h2>
       <div class="section-rule"></div>
     </div>
 
@@ -421,7 +446,7 @@
             <span class="en">★ Best Paper</span>
           </span>
           <div class="pub-links">
-            <a href="https://ken.ieice.org/ken/paper/20250615vc9y/" class="pub-link" target="_blank">Paper</a>
+            <a href="https://ken.ieice.org/ken/paper/20250615vc9y/" class="pub-link" target="_blank">Info</a>
           </div>
         </div>
       </li>
@@ -493,7 +518,7 @@
             <span class="ja">声なき声を拾う試み ― ChatGPTで図解を100枚作って分かったこと</span>
             <span class="en">Picking Up Unheard Voices: What We Learned from Creating 100 Diagrams with ChatGPT</span>
           </div>
-          <div class="pub-authors">C. Y. Futtel, <strong>T. Otsuka</strong></div>
+          <div class="pub-authors">コンラッド・ユーキ・フッテル, <strong>大塚隼輝</strong></div>
           <div class="pub-venue">
             <span class="ja">AI時代の教育学会 生涯知能専門研究グループ オンライン講演</span>
             <span class="en">Society of Education in the Age of AI, Lifelong Intelligence Research Group — Online Lecture</span>
@@ -508,7 +533,7 @@
             <span class="en">Let's Talk About the New Horizons Created by AI and Humans</span>
           </div>
           <div class="pub-authors">
-            <span class="ja">石井力重, 安松健, C. Y. Futtel, <strong>大塚隼輝</strong></span>
+            <span class="ja">石井力重, 安松健, コンラッド・ユーキ・フッテル, <strong>大塚隼輝</strong></span>
             <span class="en">R. Ishii, T. Yasumatsu, C. Y. Futtel, <strong>T. Otsuka</strong></span>
           </div>
           <div class="pub-venue">
@@ -524,11 +549,17 @@
   <section id="projects" class="reveal">
     <div class="section-header">
       <span class="section-num">02</span>
-      <h2 class="section-title">Projects</h2>
+      <h2 class="section-title">
+        <span class="ja">プロジェクト</span>
+        <span class="en">Projects</span>
+      </h2>
       <div class="section-rule"></div>
     </div>
 
-    <div class="pub-group-title">Research</div>
+    <div class="pub-group-title">
+      <span class="ja">研究</span>
+      <span class="en">Research</span>
+    </div>
     <div class="project-grid">
       <div class="project-card">
         <div class="project-tag">Research System</div>
@@ -550,7 +581,10 @@
       </div>
     </div>
 
-    <div class="pub-group-title">Creative Work</div>
+    <div class="pub-group-title">
+      <span class="ja">クリエイティブ</span>
+      <span class="en">Creative Work</span>
+    </div>
     <div class="project-grid">
       <div class="project-card">
         <div class="project-tag">Film</div>
@@ -613,12 +647,18 @@
   <section id="cv" class="reveal">
     <div class="section-header">
       <span class="section-num">03</span>
-      <h2 class="section-title">Curriculum Vitae</h2>
+      <h2 class="section-title">
+        <span class="ja">履歴</span>
+        <span class="en">Curriculum Vitae</span>
+      </h2>
       <div class="section-rule"></div>
     </div>
 
     <div class="cv-section">
-      <div class="cv-category">Education</div>
+      <div class="cv-category">
+        <span class="ja">学歴</span>
+        <span class="en">Education</span>
+      </div>
       <div class="cv-item">
         <span class="cv-date">2010.4 – 2015.3</span>
         <div class="cv-detail">
@@ -652,7 +692,10 @@
     </div>
 
     <div class="cv-section">
-      <div class="cv-category">Professional Experience</div>
+      <div class="cv-category">
+        <span class="ja">職歴</span>
+        <span class="en">Professional Experience</span>
+      </div>
       <div class="cv-item">
         <span class="cv-date">
           <span class="ja">2022.6 – 現在</span>
@@ -685,7 +728,10 @@
     </div>
 
     <div class="cv-section">
-      <div class="cv-category">Awards & Grants</div>
+      <div class="cv-category">
+        <span class="ja">受賞・助成</span>
+        <span class="en">Awards & Grants</span>
+      </div>
       <div class="cv-item">
         <span class="cv-date">2025</span>
         <div class="cv-detail">
@@ -707,7 +753,10 @@
     </div>
 
     <div class="cv-section">
-      <div class="cv-category">Qualifications</div>
+      <div class="cv-category">
+        <span class="ja">資格・免許</span>
+        <span class="en">Qualifications</span>
+      </div>
       <div class="cv-item">
         <span class="cv-date">2021</span>
         <div class="cv-detail">
@@ -736,7 +785,10 @@
   <section id="contact" class="reveal">
     <div class="section-header">
       <span class="section-num">04</span>
-      <h2 class="section-title">Contact</h2>
+      <h2 class="section-title">
+        <span class="ja">問い合わせ先・リンク</span>
+        <span class="en">Contact</span>
+      </h2>
       <div class="section-rule"></div>
     </div>
     <div class="contact-grid">
