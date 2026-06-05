@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>大塚 隼輝 — Toshiki Otsuka</title>
   <meta name="description" content="大塚隼輝のポートフォリオ。AI創造性支援・KJ法・まちづくりを横断する研究者。">
-  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" href="img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Bricolage+Grotesque:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -227,6 +227,21 @@
     .project-card:hover {
       transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.06);
     }
+    .project-photo {
+      aspect-ratio: 16 / 10; border-radius: 4px; overflow: hidden;
+      margin-bottom: 1.2rem; background: var(--accent-light);
+    }
+    .project-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.35s ease;
+    }
+    .project-card:hover .project-photo img { transform: scale(1.035); }
+    .project-photo-credit {
+      display: block; margin: -0.88rem 0 0.55rem;
+      font-family: var(--mono); font-size: 0.58rem; line-height: 1.4;
+      color: var(--muted); text-align: right;
+    }
+    .project-photo-credit:empty { display: none; }
     .project-tag {
       font-family: var(--mono); font-size: 0.66rem; color: var(--accent);
       letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.7rem;
@@ -327,7 +342,7 @@
   <nav id="navbar">
     <div class="nav-inner">
       <a href="#" class="nav-logo">
-        <img class="nav-logo-mark" src="favicon.png" alt="T.O." width="28" height="28">
+        <img class="nav-logo-mark" src="img/favicon.png" alt="T.O." width="28" height="28">
         <span class="ja">大塚隼輝</span>
         <span class="en">T. Otsuka</span>
       </a>
@@ -375,8 +390,8 @@
           <span class="en">大塚 隼輝</span>
         </p>
         <p class="hero-desc">
-          <span class="ja">九州大学文学部卒。有田まちづくり公社取締役として地域創生に10年従事しながら、生成AIと質的統合法（KJ法）の融合による創造性支援を研究しています。人文知とテクノロジーの交差点から、人間とAIの共創のあり方を探求しています。</span>
-          <span class="en">After graduating from Kyushu University with a degree in Humanities, I have spent over 10 years in community development as a board director of Arita Machizukuri Corporation, while researching AI-augmented creativity through the integration of generative AI and the KJ Method. I explore human–AI co-creation at the intersection of humanistic knowledge and technology.</span>
+          <span class="ja">九州大学文学部卒。(株)有田まちづくり公社取締役として地域創生に10年間従事。現在は生成AIとKJ法の融合による創造的な合意形成の支援を研究している。人文知とテクノロジーの交差点から、人間と機械の共創のあり方を探求する。</span>
+          <span class="en">After graduating from Kyushu University with a degree in Humanities, I have spent over 10 years in community development as a board director of Arita Machizukuri Corporation, while researching AI-augmented creativity and computer supported consensus-building (CSCB) through the integration of generative AI and the KJ Method. I explore human–AI co-creation at the intersection of technology and humanistic knowledge.</span>
         </p>
         <div class="hero-keywords">
           <span class="keyword">AI-Augmented Creativity</span>
@@ -386,7 +401,7 @@
         </div>
       </div>
       <div class="hero-photo">
-        <img src="toshikiotsuka.jpg" alt="大塚隼輝">
+        <img src="img/toshikiotsuka.jpg" alt="大塚隼輝">
       </div>
     </div>
   </header>
@@ -575,8 +590,11 @@
     </div>
     <div class="project-grid">
       <div class="project-card">
+        <div class="project-photo">
+          <img src="img/kjgpt.png" alt="KJ-GPT/Mizmi" loading="lazy">
+        </div>
         <div class="project-tag">Research System</div>
-        <h3 class="project-name">KJ-GPT</h3>
+        <h3 class="project-name">KJ-GPT/Mizmi</h3>
         <p class="project-desc">
           <span class="ja">KJ法の図解化プロセスをOpenAI APIで半自動化するシステム。質的データの構造化とラベル生成を支援し、人間による検証可能性を保持した設計。電子情報通信学会「合意と共創」研究会にて優秀賞を受賞。</span>
           <span class="en">A system that semi-automates the KJ Method diagramming process using the OpenAI API. It assists with structuring qualitative data and generating labels while preserving human verifiability. Awarded Best Paper at the IEICE Technical Committee on Consensus and Co-creation.</span>
@@ -588,8 +606,7 @@
         </div>
         <div class="project-links">
           <a href="https://ken.ieice.org/ken/paper/20250615vc9y/" target="_blank">Paper</a>
-          <a href="#" target="_blank">GitHub</a>
-          <a href="#" target="_blank">Demo</a>
+          <a href="https://github.com/TshkOtsk/kj-gpt-auto" target="_blank">GitHub</a>
         </div>
       </div>
     </div>
@@ -600,6 +617,10 @@
     </div>
     <div class="project-grid">
       <div class="project-card">
+        <div class="project-photo">
+          <img src="img/modoranai.png" alt="もどらないかげ" loading="lazy">
+        </div>
+        <span class="project-photo-credit">Shot by Takuya Murakami</span>
         <div class="project-tag">Film</div>
         <h3 class="project-name">
           <span class="ja">もどらないかげ</span>
@@ -615,10 +636,14 @@
           <span>Storytelling</span>
         </div>
         <div class="project-links">
-          <a href="#" target="_blank">Trailer</a>
+          <a href="https://www.instagram.com/tsuchikone_film/" target="_blank">Instagram</a>
         </div>
       </div>
       <div class="project-card">
+        <div class="project-photo">
+          <img src="img/sbs.png" alt="Slowly but Surely" loading="lazy">
+        </div>
+        <span class="project-photo-credit">Photo by Seitaro Iki</span>
         <div class="project-tag">Publication Design</div>
         <h3 class="project-name">Slowly but Surely</h3>
         <p class="project-desc">
@@ -635,6 +660,10 @@
         </div>
       </div>
       <div class="project-card">
+        <div class="project-photo">
+          <img src="img/yosomon.png" alt="有田まちなかフェスティバル" loading="lazy">
+        </div>
+        <span class="project-photo-credit">Photo by Shin’ichiro Nakashima</span>
         <div class="project-tag">Community Design</div>
         <h3 class="project-name">
           <span class="ja">有田まちなかフェスティバル</span>
@@ -648,9 +677,6 @@
           <span>Community</span>
           <span>Branding</span>
           <span>Arita</span>
-        </div>
-        <div class="project-links">
-          <a href="#" target="_blank">Gallery</a>
         </div>
       </div>
     </div>
