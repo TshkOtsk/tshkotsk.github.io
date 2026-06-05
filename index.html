@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="img/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Bricolage+Grotesque:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Bricolage+Grotesque:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400&display=swap" rel="stylesheet">
   <style>
     :root {
       --ink: #24231f;
@@ -91,12 +91,22 @@
     }
     .nav-logo {
       display: inline-flex; align-items: center; gap: 0.55rem;
-      font-family: var(--serif); font-size: 1.2rem; font-weight: 700;
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
       color: var(--ink); text-decoration: none; letter-spacing: -0.02em; line-height: 1;
     }
     .nav-logo-mark {
       display: block; width: 28px; height: 28px; max-width: 28px; max-height: 28px;
       object-fit: contain; flex: 0 0 28px;
+    }
+    .nav-logo-name {
+      display: inline-block; max-width: 0; overflow: hidden; white-space: nowrap;
+      font-family: 'Noto Serif JP', 'Yu Mincho', 'YuMincho', serif; font-weight: 400;
+      color: #4f4d47; opacity: 0;
+      transition: opacity 1s ease, max-width 0s linear 1s;
+    }
+    nav.scrolled .nav-logo-name {
+      max-width: 9rem; opacity: 1;
+      transition: opacity 1s ease, max-width 0s linear;
     }
     .nav-right { display: flex; align-items: center; }
     .nav-links { display: flex; gap: 1.8rem; list-style: none; }
@@ -343,8 +353,8 @@
     <div class="nav-inner">
       <a href="#" class="nav-logo">
         <img class="nav-logo-mark" src="img/favicon.png" alt="T.O." width="28" height="28">
-        <span class="ja">大塚隼輝</span>
-        <span class="en">T. Otsuka</span>
+        <span class="ja nav-logo-name">大塚隼輝</span>
+        <span class="en nav-logo-name">T. Otsuka</span>
       </a>
       <div class="nav-right">
         <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="メニュー">
@@ -394,10 +404,22 @@
           <span class="en">After graduating from Kyushu University with a degree in Humanities, I have spent over 10 years in community development as a board director of Arita Machizukuri Corporation, while researching AI-augmented creativity and computer supported consensus-building (CSCB) through the integration of generative AI and the KJ Method. I explore human–AI co-creation at the intersection of technology and humanistic knowledge.</span>
         </p>
         <div class="hero-keywords">
-          <span class="keyword">AI-Augmented Creativity</span>
-          <span class="keyword">KJ Method</span>
-          <span class="keyword">Sensemaking</span>
-          <span class="keyword">Community Design</span>
+          <span class="keyword">
+            <span class="ja">AI拡張による創造性</span>
+            <span class="en">AI-Augmented Creativity</span>
+          </span>
+          <span class="keyword">
+            <span class="ja">KJ法</span>
+            <span class="en">KJ Method</span>
+          </span>
+          <span class="keyword">
+            <span class="ja">コンピュータ支援の合意形成</span>
+            <span class="en">Computer Supported Consensus-Building</span>
+          </span>
+          <span class="keyword">
+            <span class="ja">コミュニティデザイン</span>
+            <span class="en">Community Design</span>
+          </span>
         </div>
       </div>
       <div class="hero-photo">
@@ -855,10 +877,13 @@
   </footer>
 
   <script>
-    // Nav scroll shadow
-    window.addEventListener('scroll', () => {
-      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
-    });
+    // Nav state
+    const navbar = document.getElementById('navbar');
+    const updateNavState = () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 10);
+    };
+    updateNavState();
+    window.addEventListener('scroll', updateNavState);
 
     // Close mobile menu on link click
     document.querySelectorAll('.nav-links a').forEach(a => {
